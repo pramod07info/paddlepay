@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan_id: MyString
+  plan_name: MyString
+  paddle_user_id: MyString
+  paddle_user_email: MyString
+  User: one
+
+two:
+  plan_id: MyString
+  plan_name: MyString
+  paddle_user_id: MyString
+  paddle_user_email: MyString
+  User: two

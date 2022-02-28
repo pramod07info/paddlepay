@@ -1,6 +1,7 @@
 require "faraday"
 require 'uri'
 class PaymentsController < ApplicationController
+  before_action :require_login
   before_action :set_payment, only: %i[ show edit update destroy ]
 
   # GET /payments or /payments.json
