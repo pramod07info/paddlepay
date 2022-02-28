@@ -1,0 +1,63 @@
+
+<script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+<script type="text/javascript">
+  Paddle.Environment.set('sandbox');
+
+
+Paddle.Setup({
+  vendor: 4930,
+  eventCallback: function(data) {
+    // The data.event will specify the event type
+    if (data.event === "Checkout.Complete") {
+      console.log("Sucees message",data.eventData); // Data specifics on the event
+    }
+    else if (data.event === "Checkout.Close") {
+      console.log("closed message",data.eventData); // Data specifics on the event
+    }
+  }
+});
+
+
+</script>
+<p style="color: green"><%= notice %></p>
+
+<h1>Payments</h1>
+
+<%# <%= link_to "New payment", new_payment_path %> 
+<div>
+  <h5><%= %></h5>
+
+ 
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Billing Type</th>
+      <th>Billing Period</th>
+      <th>Intial Price</th>
+      <th colspan="5">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resposen_object['response'].each do |object| %>
+      <tr>
+        <td><%=  object['name'] %></td>
+        <td><%=  object['billing_type'] %></td>
+        <td><%=  object['billing_period'] %></td>
+        <td><%=  object['recurring_price']['USD'] %></td>
+        <td> <a href="#!"  class="paddle_button" data-product="<%= object['id']%>">Buy now!</a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<script type="text/javascript">
+	function openCheckout() {
+		Paddle.Checkout.open({ product: 22122 });
+	}
+	document.getElementById('buy').addEventListener('click', openCheckout, false);
+
+
+</script>
